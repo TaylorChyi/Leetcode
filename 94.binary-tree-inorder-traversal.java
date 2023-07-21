@@ -1,3 +1,4 @@
+import java.util.Deque;
 import java.util.List;
 
 /*
@@ -23,19 +24,40 @@ import java.util.List;
  * }
  */
 class Solution {
+    // public List<Integer> inorderTraversal(TreeNode root) {
+    //     List<Integer> inorder_traversal_result = new ArrayList<Integer>();
+    //     inorder(inorder_traversal_result, root);
+
+    //     return inorder_traversal_result;
+    // }
+
+    // public void inorder(List<Integer> inorder_traversal_result, TreeNode node) {
+    //     if (node != null) {
+    //         inorder(inorder_traversal_result, node.left);
+    //         inorder_traversal_result.add(node.val);
+    //         inorder(inorder_traversal_result, node.right);
+    //     }
+    // }
+
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> inorder_traversal_result = new ArrayList<Integer>();
-        inorder(inorder_traversal_result, root);
+        Deque<TreeNode> stack = new LinkedList<TreeNode>();
+        List<Integer> result = new ArrayList<Integer>();
 
-        return inorder_traversal_result;
-    }
+        TreeNode cursor = root;
 
-    public void inorder(List<Integer> inorder_traversal_result, TreeNode node) {
-        if (node != null) {
-            inorder(inorder_traversal_result, node.left);
-            inorder_traversal_result.add(node.val);
-            inorder(inorder_traversal_result, node.right);
+        while (cursor != null || !stack.isEmpty()) {
+            if (cursor != null) {
+                stack.push(cursor);
+                cursor = cursor.left;
+            }
+            else {
+                cursor = stack.pop();
+                result.add(cursor.val);
+                cursor = cursor.right;
+            }
         }
+
+        return result;
     }
 }
 // @lc code=end

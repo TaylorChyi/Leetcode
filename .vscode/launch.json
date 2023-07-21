@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test28",
+            "request": "launch",
+            "mainClass": "test.test28",
+            "projectName": "Leetcode_50a96865"
+        },
+        {
+            "type": "java",
             "name": "Launch T367",
             "request": "launch",
             "mainClass": "Test.T367",
